@@ -22,9 +22,16 @@
         let dx;
         let dy;
 
+        let firstturn = true;
+        let point;
 
+        
         function throwdice() {
+            let sum;
+
             let ch = 1 + Math.floor(Math.random() * 6);
+
+            sum = ch;
 
             dx = dicex;
             dy = dicey;
@@ -34,8 +41,48 @@
             dx = dicex + 150;
             ch = 1+Math.floor(Math.random()*6);
 
+            sum += ch;
+
             drawface(ch);            
+
+            if (firstturn) {
+                switch (sum) {
+                    case 7:
+                    case 11:
+                        document.f.outcome.value = 'You Win!';
+                        break;
+                    case 2:
+                    case 3:
+                    case 12:
+                        document.f.outcome.value='You Lose!';
+                        break;         
+                    default:
+                        point =sum;
+                        document.f.pv.value=point;
+                        firstturn = false;
+                        document.f.stage.value='Need follow-up throw.';
+                        document.f.outcome.value=' ';
+                        
+                }
+            }    
+            else {
+                switch (sum) {
+                    case point:
+                        document.f.outcome.value = 'You Win!';
+                        document.f.stage.value='Back to first throw.';
+                        document.f.pv.value=' ';
+                        firstturn = true;
+                        break;
+                    case 7:
+                        document.f.outcome.value = 'You Lose!';
+                        document.f.stage.value='Back to first throw.';
+                        document.f.pv.value= " ";
+                        firstturn = true;
+
+                }
+            }
         }
+        
 
         function drawface(n) {
             ctx = document.getElementById('canvas').getContext('2d');
@@ -166,12 +213,17 @@
     </script>
 </head>
 
-<body onload="init()">
+<body>
     <canvas id="canvas" width="600" height="400" style="border: 2px solid black">
-        page 60
+      
     </canvas> 
     <br>
     <button onclick="throwdice()">Throw Dice</button>
+    <form name="f">
+        Stage: <input name="stage" value="First Throw">
+        Point: <input name="pv" value=" ">
+        Outcome: <input name="outcome" value=" ">
+    </form>
 </body>
 
 </html>
