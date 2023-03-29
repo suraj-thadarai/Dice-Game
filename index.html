@@ -25,7 +25,7 @@
         let firstturn = true;
         let point;
 
-        
+
         function throwdice() {
             let sum;
 
@@ -39,11 +39,11 @@
             drawface(ch);
 
             dx = dicex + 150;
-            ch = 1+Math.floor(Math.random()*6);
+            ch = 1 + Math.floor(Math.random() * 6);
 
             sum += ch;
 
-            drawface(ch);            
+            drawface(ch);
 
             if (firstturn) {
                 switch (sum) {
@@ -54,35 +54,35 @@
                     case 2:
                     case 3:
                     case 12:
-                        document.f.outcome.value='You Lose!';
-                        break;         
+                        document.f.outcome.value = 'You Lose!';
+                        break;
                     default:
-                        point =sum;
-                        document.f.pv.value=point;
+                        point = sum;
+                        document.f.pv.value = point;
                         firstturn = false;
-                        document.f.stage.value='Need follow-up throw.';
-                        document.f.outcome.value=' ';
-                        
+                        document.f.stage.value = 'Need follow-up throw.';
+                        document.f.outcome.value = ' ';
+
                 }
-            }    
+            }
             else {
                 switch (sum) {
                     case point:
                         document.f.outcome.value = 'You Win!';
-                        document.f.stage.value='Back to first throw.';
-                        document.f.pv.value=' ';
+                        document.f.stage.value = 'Back to first throw.';
+                        document.f.pv.value = ' ';
                         firstturn = true;
                         break;
                     case 7:
                         document.f.outcome.value = 'You Lose!';
-                        document.f.stage.value='Back to first throw.';
-                        document.f.pv.value= " ";
+                        document.f.stage.value = 'Back to first throw.';
+                        document.f.pv.value = " ";
                         firstturn = true;
 
                 }
             }
         }
-        
+
 
         function drawface(n) {
             ctx = document.getElementById('canvas').getContext('2d');
@@ -120,95 +120,95 @@
 
         }
 
-        function draw1(){
+        function draw1() {
             let dotx;
             let doty;
 
             ctx.beginPath();
-            dotx = dx + .5*dicewidth;
+            dotx = dx + .5 * dicewidth;
 
-            doty = dy + .5*diceheight;
+            doty = dy + .5 * diceheight;
 
-            ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);
+            ctx.arc(dotx, doty, dotrad, 0, Math.PI * 2, true);
 
             ctx.closePath();
             ctx.fill();
         }
 
-        function draw2(){
+        function draw2() {
             let dotx;
             let doty;
 
             ctx.beginPath();
             // creating first dot
-            dotx = dx + 3*dotrad;
-            doty = dy + 3*dotrad;
-            ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);
-            
+            dotx = dx + 3 * dotrad;
+            doty = dy + 3 * dotrad;
+            ctx.arc(dotx, doty, dotrad, 0, Math.PI * 2, true);
+
             // creating second dot
-            dotx = dx + dicewidth-3*dotrad;
-            doty = dy + diceheight-3*dotrad;
-            ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);
-            
+            dotx = dx + dicewidth - 3 * dotrad;
+            doty = dy + diceheight - 3 * dotrad;
+            ctx.arc(dotx, doty, dotrad, 0, Math.PI * 2, true);
+
             ctx.closePath();
             ctx.fill();
         }
 
-        function draw4(){
+        function draw4() {
             let dotx;
             let doty;
 
             ctx.beginPath();
             // creating first dot
-            dotx = dx + 3*dotrad;
-            doty = dy + 3*dotrad;
-            ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);
-            
+            dotx = dx + 3 * dotrad;
+            doty = dy + 3 * dotrad;
+            ctx.arc(dotx, doty, dotrad, 0, Math.PI * 2, true);
+
             // creating second dot
-            dotx = dx + dicewidth-3*dotrad;
-            doty = dy + diceheight-3*dotrad;
-            ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);
+            dotx = dx + dicewidth - 3 * dotrad;
+            doty = dy + diceheight - 3 * dotrad;
+            ctx.arc(dotx, doty, dotrad, 0, Math.PI * 2, true);
 
             ctx.closePath();
             ctx.fill();
             ctx.beginPath();
 
             // Third Dot
-            dotx = dx + 3*dotrad;
-            doty = dy + diceheight-3*dotrad;
-            ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);
+            dotx = dx + 3 * dotrad;
+            doty = dy + diceheight - 3 * dotrad;
+            ctx.arc(dotx, doty, dotrad, 0, Math.PI * 2, true);
 
             // Fourth Dot
-            dotx = dx + dicewidth-3*dotrad;
-            doty = dy + 3*dotrad;
-            ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);
+            dotx = dx + dicewidth - 3 * dotrad;
+            doty = dy + 3 * dotrad;
+            ctx.arc(dotx, doty, dotrad, 0, Math.PI * 2, true);
             ctx.closePath();
             ctx.fill();
         }
 
-        function draw2mid(){
+        function draw2mid() {
             let dotx;
             let doty;
 
             ctx.beginPath();
             // creating first dot
-            dotx = dx + 3*dotrad;
-            doty = dy + .5*diceheight;
-            ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);
+            dotx = dx + 3 * dotrad;
+            doty = dy + .5 * diceheight;
+            ctx.arc(dotx, doty, dotrad, 0, Math.PI * 2, true);
 
             // creating second dot
-            dotx = dx + dicewidth-3*dotrad;
-            doty = dy + .5*diceheight;
-            ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);
+            dotx = dx + dicewidth - 3 * dotrad;
+            doty = dy + .5 * diceheight;
+            ctx.arc(dotx, doty, dotrad, 0, Math.PI * 2, true);
 
             ctx.closePath();
             ctx.fill();
-            
+
         }
 
 
 
-        
+
 
     </script>
 </head>
@@ -216,8 +216,8 @@
 <body>
     <h1>This is the game of CRAPS!!!!</h1>
     <canvas id="canvas" width="600" height="400" style="border: 2px solid black">
-      
-    </canvas> 
+
+    </canvas>
     <br>
     <button onclick="throwdice()">Throw Dice</button>
     <form name="f">
